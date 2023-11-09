@@ -1,0 +1,19 @@
+.grid_container {
+    display: grid;
+    grid-template-rows: 20% minmax(auto-fit, 90%) 5%;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'header' 'body' 'footer';
+}
+
+.header {
+    grid-area: header;
+}
+
+.body {
+    grid-area: body;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: black;
+}

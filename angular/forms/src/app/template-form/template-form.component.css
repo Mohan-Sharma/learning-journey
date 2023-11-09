@@ -1,0 +1,8 @@
+.container {
+  margin-top: 30px;
+}
+
+/* use the built in classes to advantage for error border */
+.form-control.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

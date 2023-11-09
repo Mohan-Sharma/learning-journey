@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-sm-12">
+      <div class="h4 text-center">
+        <span>First Assignment!</span>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-12">
+      <warning-alert />
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-12">
+      <success-alert />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" name="username" [(ngModel)]="username" class="form-control"/>
+      <p> {{username}} </p>
+      <button [disabled]="username === ''" (click)="updateUsername()" class="btn btn-primary">Reset</button>
+    </div>
+  </div>
+</div>

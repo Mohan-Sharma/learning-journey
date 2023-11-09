@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* color */
+    --bg-accent-primary: hsl(227, 22%, 17%);
+    --bg-accent-primary: hsl(229, 24%, 13%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+}
+
+body {
+    font-family: system-ui;
+    font-size: 4rem;
+    line-height: 1.6;
+    background: var(--bg-accent-primary);
+    color: var(--bg-accent-primary);
+    display: grid;
+    place-content: center;
+    min-height: calc(100dvh - 1px);
+    text-transform: uppercase;
+}
+
+.container {
+    position: relative;
+    perspective: 10px;
+}
+
+h1:hover {
+    color: white;
+    text-shadow: 0 0 10px cyan,
+    0 0 20px cyan,
+    0 0 40px cyan;
+    cursor: pointer;
+
+    & ~ .tardis {
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 45%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        animation: zoomThru 4s linear forwards;
+        transform-origin: bottom;
+    }
+}
+
+.tardis {
+    display: none;
+}
+
+@keyframes zoomThru {
+    0% {
+        transform: translate(-1ch);
+        rotate: -360deg;
+    }
+    20%,
+    100% {
+        transform: translate(11ch);
+    }
+}

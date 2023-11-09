@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* general styling */
+:root {
+
+    /* colors */
+    --clr-primary-soft-blue: 215 51% 70%;
+    --clr-primary-cyan: hsl(178, 100%, 50%);
+    --primary-cyan: 178 100% 50%;
+    --clr-primary-blue: hsl(228, 45%, 44%);
+
+    --clr-accent-900: hsl(217, 54%, 11%);
+    --clr-accent-700: hsl(216, 50%, 16%);
+    --clr-accent-500: hsl(215, 32%, 27%);
+    --clr-neutral-white: hsl(0, 0%, 100%);
+
+    /* sizes */
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* fonts */
+    --font-size: 1.125rem;
+    --font-family-default: 'Outfit', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-semi-bold: 600;
+}
+
+* {
+    font: inherit;
+}
+
+body {
+    font-family: var(--font-family-default);
+    font-size: var(--font-size);
+    background-color: var(--clr-accent-900);
+    min-height: calc(100dvh - 1px);
+    color: hsl(var(--clr-primary-soft-blue) / .9);
+    display: grid;
+    place-content: center;
+    margin: var(--size-3xl);
+}
+
+img, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Component styling */
+
+.digital-coin {
+    --container-border-radius: var(--size-sm);
+    --content-padding: var(--size-2xl);
+    display: grid;
+    grid-gap: var(--size-xl);
+    background: var(--clr-accent-700);
+    border-radius: var(--container-border-radius);
+    padding: var(--content-padding);
+    overflow: hidden;
+    box-shadow: 0 0 10px 1px var(--clr-accent-500);
+}
+
+.digital-coin__img--container {
+    --img-border-radius: var(--size-2xs);
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        position: absolute;
+        transition: background-color 500ms, background-image 500ms;
+        border-radius: var(--img-border-radius);
+    }
+
+    &:hover::after {
+        background-image: url('images/icon-view.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: hsl(var(--primary-cyan) / .5);
+        cursor: pointer;
+        overflow: hidden;
+    }
+}
+
+.digital-coin__img {
+    border-radius: var(--img-border-radius);
+}
+
+.digital-coin__name {
+    color: var(--clr-neutral-white);
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--size-xl);
+    letter-spacing: 1px;
+}
+
+.digital-coin__name:is(:hover, :focus) {
+    color: var(--clr-primary-cyan);
+    cursor: pointer;
+}
+
+.digital-coin__desc {
+    font-weight: var(--font-weight-light);
+    font-size: var(--size-lg);
+}
+
+.horizontal__line {
+    border: 0;
+    border-top: 1px solid var(--clr-accent-500);
+}
+
+.digital-coin__offer {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--size-base);
+}
+
+.offer--value {
+    color: var(--clr-primary-cyan);
+    display: flex;
+    gap: var(--size-2xs);
+    align-items: center;
+
+    &::before {
+        content: '';
+        background-image: url('images/icon-ethereum.svg');
+        height: 18px;
+        width: 11px;
+        display: block;
+    }
+}
+
+.offer--duration {
+    display: flex;
+    gap: var(--size-2xs);
+    align-items: center;
+
+    &::before {
+        content: '';
+        background-image: url('images/icon-clock.svg');
+        height: 17px;
+        width: 17px;
+        display: block;
+    }
+}
+
+.digital-coin__creator {
+    display: flex;
+    align-items: center;
+    gap: var(--size-base);
+    font-weight: var(--font-weight-light);
+    font-size: var(--size-base)
+}
+
+.digital-coin__creator img {
+    height: var(--size-4xl);
+    aspect-ratio: 1/1;
+    border: 1px solid var(--clr-neutral-white);
+    border-radius: 50%;
+}
+
+.creator__desc span {
+    color: var(--clr-neutral-white);
+}
+
+.creator__desc span:is(:hover, :focus) {
+    color: var(--clr-primary-cyan);
+    cursor: pointer;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    margin-top: var(--size-2xl);
+    color: var(--clr-neutral-white);
+    & a {
+        color: var(--clr-neutral-white);
+    }
+}
+
+.attribution a:is(:hover, :focus) {
+    color: var(--clr-primary-cyan)
+}
+
+@media (min-width: 500px) {
+    .digital-coin {
+        max-width: 21.5rem;
+    }
+}

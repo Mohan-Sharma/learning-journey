@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row me-auto">
+    <div class="col-md-12 mt-3">
+      <button class="btn btn-success" (click)="displayNewRecipeForm()">New Recipe</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row ms-0">
+    <div class="col-md-12 p-0">
+      <app-recipe-item *ngFor="let recipe of recipes" [recipe]="recipe"/>
+    </div>
+  </div>
+</div>

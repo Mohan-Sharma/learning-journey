@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <h5>{{ server.name }}</h5>
+        <p>Server status is {{ server.status }}</p>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12 col-sm-12" *ngIf="!editMode">
+        <button type="button" class="btn btn-primary" (click)="onSelect()">Edit Server</button>
+    </div>
+    <div class="col-xs-12 col-sm-12" *ngIf="editMode">
+        <router-outlet ></router-outlet>
+    </div>
+</div>

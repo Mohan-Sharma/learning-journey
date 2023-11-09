@@ -1,0 +1,143 @@
+body {
+    --clr-dark: #0f172a;
+    --clr-light: #f1f5f9;
+    --clr-accent: #e11d48;
+    --clr-purple: rebeccapurple;
+    margin-top: 40px; /* This margin just makes the text easier to read. You can remove it if you want since it can mess with your other styles. */
+}
+
+body::before {
+    /*overriding variable*/
+    --clr-accent: #e11d48;
+    content: "XS";
+    color: var(--clr-accent);
+    font-size: 2rem;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+/* This box class is purely used for explaining how the bootstrap grid system works. */
+.box {
+    background-color: lightblue;
+    border: 1px solid var(--clr-purple);
+    min-height: 50px;
+    font-size: 2rem;
+}
+
+@media (min-width: 576px) {
+    body::before {
+        content: "SM";
+    }
+}
+
+@media (min-width: 768px) {
+    body::before {
+        content: "MD";
+    }
+}
+
+@media (min-width: 992px) {
+    body::before {
+        content: "LG";
+    }
+}
+
+@media (min-width: 1200px) {
+    body::before {
+        content: "XL";
+    }
+}
+
+@media (min-width: 1400px) {
+    body::before {
+        content: "XXL";
+    }
+}
+
+.clip_path {
+    width: 500px;
+    height: 500px;
+    background-color: rebeccapurple;
+    /*clip-path: path("M0.5 73.5V1H20V56H72V73.5H0.5Z");*/
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+
+    &:hover {
+        clip-path: circle(50%);
+        transition: all 5s ease;
+    }
+}
+
+.perspective_frame {
+    width: 500px;
+    height: 500px;
+    border: 1px solid var(--clr-purple);
+    perspective: 800px;
+}
+
+.perspective_shape {
+    width: 500px;
+    height: 500px;
+    background-color: lightblue;
+
+    &:hover {
+        transition: all 3s ease;
+        transform: rotateY(180deg);
+        /*-180deg for right to left way */
+    }
+}
+
+
+img {
+    filter: saturate(200%);
+}
+
+img:active {
+    filter: none;
+}
+
+input {
+    padding: 20px;
+    caret-color: red;
+
+    &:focus {
+        outline: 1px solid red;
+    }
+
+    &::placeholder {
+        color: red;
+    }
+}
+
+.container-grid {
+    display: grid;
+    grid-template-rows: 100px 300px 100px;
+    grid-template-columns: 10% 80%;
+    grid-template-areas:
+        'header header'
+        'side main'
+        'footer footer';
+    gap: 1rem;
+}
+
+.item {
+    padding: 0.5em;
+    background-color: #fb7185;
+}
+
+.item-1 {
+    grid-area: header;
+}
+
+.item-2 {
+    grid-area: side;
+}
+
+.item-3 {
+    grid-area: main;
+}
+
+.item-4 {
+    grid-area: footer;
+}

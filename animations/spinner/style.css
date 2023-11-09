@@ -1,0 +1,153 @@
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-accent-primary: hsl(0 3% 12%);
+}
+
+body {
+    display: grid;
+    place-content: center;
+    background: var(--bg-accent-primary);
+    min-height: calc(100dvh - 1px);
+    grid-gap: 4rem;
+}
+
+section {
+    animation: hue-rotate 2s linear infinite;
+    margin-bottom: 5rem;
+}
+
+.spinner {
+    position: relative;
+    width: 60px;
+    aspect-ratio: 1 / 1;
+}
+
+.spinner span {
+    --_increment: var(--counter, 0);
+    /* stack all span above one another in position 0 from top and 0 from left of parent relative position*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* total is 360deg, first span is rotated 36deg, next one by 72deg etc at last all forms a circle since they were stacked together */
+    transform: rotate(calc(36deg * var(--_increment)));
+}
+
+/* this will form a small box at the start of each span aligned in circular positions */
+.spinner span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    aspect-ratio: 1 / 1;
+    background: lime;
+    border-radius: 50%;
+    box-shadow: 0 0 10px limegreen,
+    0 0 20px limegreen,
+    0 0 40px limegreen,
+    0 0 60px limegreen,
+    0 0 80px limegreen,
+    0 0 100px limegreen;
+    animation: scaleIt 2s linear infinite;
+    animation-delay: calc(0.2s * var(--_increment));
+}
+
+.spinner span:nth-child(1) {
+    --counter: 1;
+}
+
+.spinner span:nth-child(2) {
+    --counter: 2;
+}
+
+.spinner span:nth-child(3) {
+    --counter: 3;
+}
+
+.spinner span:nth-child(4) {
+    --counter: 4;
+}
+
+.spinner span:nth-child(5) {
+    --counter: 5;
+}
+
+.spinner span:nth-child(6) {
+    --counter: 6;
+}
+
+.spinner span:nth-child(7) {
+    --counter: 7;
+}
+
+.spinner span:nth-child(8) {
+    --counter: 8;
+}
+
+.spinner span:nth-child(9) {
+    --counter: 9;
+}
+
+.spinner span:nth-child(10) {
+    --counter: 10;
+}
+
+@keyframes hue-rotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes scaleIt {
+    0% {
+        scale: 1.1;
+    }
+    90%, 100% {
+        scale: 0;
+    }
+}
+
+.beacon span {
+    position: relative;
+}
+
+.beacon span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: cyan;
+    width: 10px;
+    aspect-ratio: 1/1;
+    box-shadow: 0 0 10px 2px limegreen,
+    0 0 20px 2px limegreen,
+    0 0 40px 2px limegreen,
+    0 0 60px 2px limegreen,
+    0 0 80px 2px limegreen,
+    0 0 100px 2px limegreen,
+    0 0 120px 2px limegreen,
+    0 0 140px 2px limegreen;
+    border-radius: 50%;
+    animation: beep 800ms linear infinite;
+}
+
+@keyframes beep {
+    0% {
+        scale: 0.2;
+    }
+    90%, 100% {
+        scale: 1;
+    }
+}

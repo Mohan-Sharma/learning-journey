@@ -1,0 +1,27 @@
+{
+  "name": "my-place",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "webpack-dev-server",
+    "build": "webpack",
+    "build:prod": "webpack --config webpack.config.prod.js"
+  },
+  "author": "Mohan Sharma",
+  "license": "ISC",
+  "browserslist": "> 0.5%",
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.2.1",
+    "eslint": "^8.36.0",
+    "regenerator-runtime": "^0.13.3",
+    "webpack": "^5.76.2",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  }
+}

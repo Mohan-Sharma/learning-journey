@@ -1,0 +1,59 @@
+<div class="container mt-3 rounded bg-body-secondary">
+    <form [formGroup]="recipeForm" (ngSubmit)="persistRecipe()">
+        <div class="row g-2">
+            <div class="col-12 text-center">
+                <h4> {{editMode ? 'Update Recipe' : 'Add Recipe' }}</h4>
+            </div>
+            <div class="col-12">
+                <label for="name" class="form-label ">Name</label>
+                <input type="input" name="name" id="name" class="form-control" formControlName="name">
+                <span *ngIf="recipeForm.get('name').touched && recipeForm.get('name').invalid">
+                    <span class="form-text" *ngIf="recipeForm.get('name').errors['required']">required!</span>
+                </span>
+            </div>
+            <div class="col-12">
+                <label for="desc" class="form-label">Description</label>
+                <textarea rows="4" name="desc" id="desc" class="form-control" formControlName="desc"></textarea>
+                <span *ngIf="recipeForm.get('desc').touched && recipeForm.get('desc').invalid">
+                    <span class="form-text" *ngIf="recipeForm.get('desc').errors['required']">required!</span>
+                </span>
+            </div>
+            <div class="col-12">
+                <label for="imgURL" class="form-label">Image URL</label>
+                <input type="input" name="imgURL" id="imgURL" class="form-control" formControlName="imgURL">
+                <span *ngIf="recipeForm.get('imgURL').touched && recipeForm.get('imgURL').invalid">
+                    <span class="form-text" *ngIf="recipeForm.get('imgURL').errors['required']">required!</span>
+                </span>
+                <div>
+                    <img [src]="recipeForm.get('imgURL').value" class="img-responsive">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="mb-3" formArrayName="ingredients">
+                        <h4>Ingredients</h4>
+                        <button class="btn btn-secondary" type="button">Add Ingredient</button>
+                        <div *ngFor="let ingredient of getIngredients(); let i=index">
+                            <input type="text" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="ingName" name="ingName">
+                    </div>
+                    <div class="col-sm g-1">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="amount" name="amount" >
+                    </div>
+                    <div class="col-sm-1 align-self-end ms-0">
+                        <button type="button" class="form-control btn btn-danger" id="clearIng">X</button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <button class="btn btn-success me-3" type="submit" [disabled]="recipeForm.touched && recipeForm.invalid">Save</button>
+                <button class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

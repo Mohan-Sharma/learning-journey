@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* color */
+    --bg-accent-primary: hsl(227, 22%, 17%);
+    --bg-accent-primary: hsl(229, 24%, 13%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* sizes */
+    --size-5xs: 0.0625rem;
+    --size-4xs: 0.125rem;
+    --size-3xs: 0.25rem;
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+body {
+    font-family: system-ui;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    background: var(--bg-accent-primary);
+    color: var(--neutral-100);
+}
+
+section {
+    padding-block: 8rem;
+}
+
+.container {
+    width: min(100% - 3rem, 85rem);
+    margin-inline: auto;
+}
+
+.site-header {
+    background-image: url("images/galaxy.jpeg");
+    background-position: bottom;
+    background-size: cover;
+    padding: 5rem;
+    min-height: 100vh;
+    position: relative;
+}
+
+.site-header-mask {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 0.1);
+
+    -webkit-mask: url("https://assets.codepen.io/308367/mountain-mask.svg");
+    -webkit-mask-position: center bottom;
+    -webkit-mask-size: 100%;
+
+    mask: url("https://assets.codepen.io/308367/mountain-mask.svg");
+    mask-position: bottom;
+    mask-size: cover;
+}
+
+.site-title {
+    text-align: center;
+    font-size: clamp(4rem, 10vw + 0.5rem, 9rem);
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    position: fixed;
+    width: 100%;
+    color: var(--neutral-100);
+    text-shadow: 0 0 10px var(--accent-1);
+}

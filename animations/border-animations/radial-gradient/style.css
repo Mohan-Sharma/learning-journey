@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-accent-primary: hsl(227, 22%, 17%);
+    --bg-accent-secondary: hsl(229, 24%, 13%);
+    --bg-accent-ternary: hsl(227, 24%, 30%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+
+    --font-family-base: 'Nova Mono', monospace;
+    --font-weight: 400;
+    --font-size: 1rem;
+}
+
+body {
+    min-height: calc(100dvh - 1px);
+    display: grid;
+    place-content: center;
+}
+
+.card {
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-accent-secondary);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    /* radial-gradient(shape size at position, start-color, ..., last-color); */
+    background: radial-gradient(circle at center, var(--accent-3), transparent, transparent);
+    animation: rotate 2s linear infinite;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    background: var(--bg-accent-ternary);
+    inset: 10px;
+    border-radius: 10px;
+}
+
+@keyframes rotate {
+    0% {
+
+        transform: translate(-200px, -300px);
+    }
+    25% {
+
+        transform: translate(0px, -300px);
+    }
+    50% {
+
+        transform: translate(0px, 0px);
+    }
+    75% {
+
+        transform: translate(-200px, 0px);
+    }
+    100% {
+
+        transform: translate(-200px, -300px);
+    }
+}

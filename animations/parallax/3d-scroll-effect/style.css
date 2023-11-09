@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-accent-primary: hsl(227, 22%, 17%);
+    --bg-accent-primary: hsl(229, 24%, 13%);
+    --accent-1: hsl(0, 0%, 100%);
+    --font-family-base: 'Nova Mono', monospace;
+    --font-weight: 400;
+    --font-size: 1rem;
+}
+
+body {
+    color: var(--accent-1);
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight);
+    font-size: var(--font-size);
+}
+
+
+.wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* it defines z-axis from which we can view the 3d */
+    perspective: 10px;
+}
+
+header {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+}
+
+h1 {
+    font-size: 8rem;
+    text-shadow: 0 0 10px orchid;
+    z-index: 1;
+}
+
+.foreground, .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+section {
+    padding: 2rem 4rem;
+    background: var(--bg-accent-primary);
+}
+
+.background {
+    transform: translateZ(-10px) scale(2);
+}
+
+.foreground {
+    transform: translateZ(-5px) scale(1.5);
+}

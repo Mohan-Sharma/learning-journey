@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(227, 22%, 17%);
+    --bg-accent-secondary: hsl(229, 24%, 13%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* sizes */
+    --size-5xs: 0.0625rem;
+    --size-4xs: 0.125rem;
+    --size-3xs: 0.25rem;
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+body {
+    font-family: var(--font-family-lato);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-x-bold);
+    height: calc(100dvh - 1px);
+}
+
+.title {
+    font-size: 6rem;
+    text-shadow: 0 0 3px var(--accent-1), 0 0 3px var(--accent-2);
+}
+
+.desc {
+    font-size: 2rem;
+}
+
+.bg__img {
+    --bg-img-url: url('./images/img.png');
+    --bg-img-opacity: 0.4;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    min-height: 100dvh;
+
+    position: relative;
+    isolation: isolate;
+}
+
+.bg__img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background-image: var(--bg-img-url);
+    background-position: bottom;
+    background-size: cover;
+    opacity: var(--bg-img-opacity);
+}

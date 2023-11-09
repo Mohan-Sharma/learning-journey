@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(227, 22%, 17%);
+    --bg-accent-secondary: hsl(229, 24%, 13%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* sizes */
+    --size-5xs: 0.0625rem;
+    --size-4xs: 0.125rem;
+    --size-3xs: 0.25rem;
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-x-bold);
+    min-height: calc(100dvh - 1px);
+    background: var(--bg-accent-secondary);
+    display: grid;
+    place-content: center;
+}
+
+/* Button basic reset */
+button {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    background: none;
+    color: white;
+}
+
+.fill-color {
+    padding: 1rem 5rem;
+    border: 5px solid var(--bg-accent-ternary);
+    font-size: 1.2rem;
+    /*Form elements don't inherit font settings, you have to set these properties manually.*/
+    font-family: var(--font-family-base);
+    text-transform: uppercase;
+    position: relative;
+
+    &:hover {
+        color: var(--bg-accent-primary);
+    }
+}
+
+.fill-color::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--bg-accent-ternary);
+    scale: 0 1;
+    transform-origin: right;
+    transition: scale 450ms ease;
+    z-index: -1;
+}
+
+.fill-color:hover::after {
+    scale: 1 1;
+    transform-origin: left;
+}

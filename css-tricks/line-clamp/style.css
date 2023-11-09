@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(227, 22%, 17%);
+    --bg-accent-secondary: hsl(229, 24%, 13%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* sizes */
+    --size-5xs: 0.0625rem;
+    --size-4xs: 0.125rem;
+    --size-3xs: 0.25rem;
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+main {
+    font-family: var(--font-family-lato);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-x-bold);
+    height: calc(100dvh - 1px);
+    display: grid;
+    place-content: center;
+    background: var(--bg-accent-secondary);
+}
+
+.card {
+    --border-radius: 10px;
+    --content-padding: var(--size-sm);
+    width: 300px;
+    height: 400px;
+    background: var(--bg-accent-primary);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 5px 1px var(--accent-1);
+    display: grid;
+    justify-content: center;
+    align-items: start;
+    text-align: center;
+    color: var(--neutral-100);
+}
+
+.details {
+    padding-inline: var(--content-padding);
+}
+
+.card__img {
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.card h1 {
+    font-size: 2rem;
+}
+
+.card p {
+    font-family: var(--font-family-base);
+    line-height: 1rem;
+    font-size: var(--size-sm);
+    margin-top: var(--size-base);
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card button {
+    display: inline-flex;
+    text-decoration: none;
+    border: 0;
+    /*
+    background-image: linear-gradient(direction, color-stop1, color-stop2, ...);
+    background-image: linear-gradient(angle, color-stop1, color-stop2);
+    */
+    background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+    color: var(--neutral-100);
+    padding: var(--size-2xs) var(--size-3xl);
+    margin-top: var(--size-base);
+    border-radius: calc(var(--border-radius) - 5px);
+    cursor: pointer;
+}

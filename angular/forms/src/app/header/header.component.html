@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-lg">
+    <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']" class="navbar-brand">Angular Forms</a>
+    <button class="navbar-toggler" type="button" (click)="collapsed = !collapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a style="cursor: pointer" class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/template']">Template</a></li>
+        <li class="nav-item"><a style="cursor: pointer" class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/reactive']">Reactive</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

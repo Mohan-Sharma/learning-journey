@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10">
+      <app-edit-shopping/>
+      <hr>
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action" style="cursor: pointer" *ngFor="let ingredient of ingredients; let i=index" (click)="editShoppingItem(i)">
+          <div class="d-flex justify-content-between">
+            <h2 class="m-0">{{ingredient.name}}</h2>
+            <small class="text-muted">({{ingredient.amount}})</small>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

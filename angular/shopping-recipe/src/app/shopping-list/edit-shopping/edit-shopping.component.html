@@ -1,0 +1,26 @@
+<div class="container">
+    <form (ngSubmit)="addIngredient()" #f="ngForm">
+        <div class="row">
+            <div class="col-sm-7 ">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" #name="ngModel" name="name" required ngModel>
+                <span *ngIf="name.touched && name.invalid" class="form-text">Required!</span>
+            </div>
+            <div class="col-sm-5">
+                <label for="amount" class="form-label">Amount</label>
+                <input type="number" class="form-control" id="amount" #amount="ngModel" [min]="minAmount" name="amount" required ngModel>
+                <span *ngIf="amount.touched && amount.invalid">
+                    <span *ngIf="f.controls.amount.errors['min'] && amount.touched" class="form-text">Minimum allowed is 10!</span>
+                    <span *ngIf="f.controls.amount.errors['required'] && amount.touched" class="form-text">Required!</span>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 mt-3">
+                <button type="submit" class="btn btn-primary" [disabled]="f.touched && f.invalid" >{{addUpdate}}</button>
+                <button type="button" class="btn btn-danger ms-3" (click)="deleteIngredient()">Delete</button>
+                <button type="button" class="btn btn-secondary ms-3" (click)="clearIngredient()">Clear</button>
+            </div>
+        </div>
+    </form>
+</div>

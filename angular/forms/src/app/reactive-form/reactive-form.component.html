@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-md-12">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div id="user-data" formGroupName="userData">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" class="form-control" name="username" formControlName="username">
+                        <span *ngIf="form.get('userData.username').touched && form.get('userData.username').invalid">
+                <span class="form-text" *ngIf="form.get('userData.username').errors['forbiddenName']">Forbidden Name</span>
+                <span class="form-text" *ngIf="form.get('userData.username').errors['required']">Required</span>
+            </span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Mail</label>
+                        <input type="email" id="email" class="form-control" name="email" formControlName="email">
+                        <span *ngIf="form.get('userData.email').touched && form.get('userData.email').invalid">
+                <span class="form-text" *ngIf="form.get('userData.email').errors['required']">Required</span>
+                    <span class="form-text" *ngIf="form.get('userData.email').errors['email']">Invalid email</span>
+                  <span class="form-text" *ngIf="form.get('userData.email').errors['invalidEmail']">Forbidded email</span>
+            </span>
+                    </div>
+                </div>
+                <div class="form-check" *ngFor="let g of genders">
+                    <label for="gender" class="form-check-label">
+                        <input type="radio" id="gender" class="form-check-input" name="gender" formControlName="gender" [value]="g"/>  {{g}}
+                    </label>
+                    <span class="form-text" *ngIf="form.get('gender').invalid && form.get('gender').touched">
+              select gender.
+            </span>
+                </div>
+                <div class="mb-3" formArrayName="hobbies">
+                    <h4>Hobbies</h4>
+                    <button class="btn btn-secondary" type="button" (click)="addHobby()">Add Hobby</button>
+                    <div *ngFor="let hobbyControl of getHobbies(); let i=index">
+                        <input type="text" class="form-control" [formControlName]="i">
+                    </div>
+                </div>
+                <!--disable if form is not valid and is touched-->
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

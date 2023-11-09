@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!--ngSubmit is a listerer of Submit Event emitter by angular-->
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div id="user-data">
+          <div class="mb-3" ngModelGroup="userData">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" class="form-control" name="username" ngModel required #username="ngModel">
+            <span class="form-text" *ngIf="username.invalid && username.touched">
+              Please enter username.
+            </span>
+          </div>
+          <button class="btn btn-secondary mb-3" type="button">Suggest an Username</button>
+          <div class="mb-3" ngModelGroup="userData">
+            <label for="email" class="form-label">Mail</label>
+            <input type="email" id="email" class="form-control" name="email" ngModel required email #email="ngModel">
+            <span class="form-text" *ngIf="email.invalid && email.touched">
+              Please enter email.
+            </span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="secret" class="form-label">Secret Questions</label>
+          <!--one way binding using property binding [ngModel]="defaultSecret" -->
+          <select id="secret" class="form-control" name="secret" [ngModel]="defaultSecret" required #secret="ngModel">
+            <option value="pet">Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+          <span class="form-text" *ngIf="secret.invalid && secret.touched">
+            Please select a secret.
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="secret-reply" class="form-label">Reply</label>
+          <!--two way binding [(ngModel)]="secretReply" -->
+          <textarea class="form-control" name="secret-reply" id="secret-reply" [(ngModel)]="secretReply" required rows="3" #reply="ngModel"></textarea>
+          <span class="form-text" *ngIf="reply.invalid && reply.touched">
+            Please enter a reply.
+          </span>
+        </div>
+        <div class="form-check" *ngFor="let gender of genders">
+          <label for="gender" class="form-check-label">
+            <input type="radio" id="gender" class="form-check-input" ngModel [value]="gender" name="gender" required/>  {{gender}}
+          </label>
+        </div>
+        <!--disable if form is not valid and is touched-->
+        <button class="btn btn-primary" type="submit" [disabled]="f.invalid && f.touched">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

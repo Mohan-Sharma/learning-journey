@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ink Reveal</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+	<div class="ink-reveal__container">
+		<div class="ink-reveal__color-img"></div>
+		<img src="./images/bw-image.jpg" alt="black and white women" class="ink-reveal__bw-img">
+	</div>
+	<section>
+		<h1>Travel Blog</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut autem cum dolore doloremque, dolores dolorum ea error facilis molestiae nihil quae quia repellat saepe sapiente voluptatum? Animi eos perferendis quibusdam rem saepe veritatis? Cupiditate deleniti dicta eaque facilis harum nostrum quo quod repudiandae temporibus unde. Blanditiis cum eum illum minus recusandae ut. A accusamus animi beatae, dolor ducimus eligendi error ex fugiat fugit, incidunt ipsam laboriosam libero minima necessitatibus nesciunt nihil nostrum numquam odio omnis perspiciatis quaerat quia saepe sequi sint soluta vero vitae. Accusamus assumenda aut delectus deserunt eligendi, eos id incidunt ipsam magnam, natus repudiandae, rerum?</p>
+	</section>
+</main>
+<script>
+	const colorImg = document.querySelector('.ink-reveal__color-img');
+	
+	const options = {
+		threshold: 0.7
+	};
+	const callback = (entries, observer) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('ink-reveal__image-mask')
+			}
+			else {
+				entry.target.classList.remove('ink-reveal__image-mask')
+			}
+		})
+	}
+	const imgIntersection = new IntersectionObserver(callback, options);
+	imgIntersection.observe(colorImg);
+	
+</script>
+</body>
+</html>

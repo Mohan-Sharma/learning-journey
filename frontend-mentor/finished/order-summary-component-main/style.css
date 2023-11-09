@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap');
+/* Reset */
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img, svg {
+    display: block;
+    max-width: 100%;
+}
+
+* {
+    font: inherit;
+}
+
+/* General styling */
+:root {
+    /* Colors */
+    --bg-accent-1: 224 23% 55%;
+    --bg-accent-2: hsl(225, 100%, 94%);
+    --primary-accent: 245 75% 52%;
+    --clr-primary: hsl(var(--primary-accent));
+    --clr-neutral-white: hsl(225, 100%, 99%);
+    --clr-neutral-dark-blue: hsl(223, 47%, 23%);
+
+    /* sizes */
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* fonts */
+    --font-size: 1rem;
+    --font-family: 'Red Hat Display', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-medium);
+    color: var(--clr-neutral-dark-blue);
+    background: url('images/pattern-background-mobile.svg') var(--bg-accent-2);
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    min-height: calc(100dvh - 1px);
+    display: grid;
+    place-content: center;
+    margin-inline: 1rem;
+    text-align: center;
+}
+
+.order__summary {
+    --content-border-radius: var(--size-xl);
+    --content-padding: var(--size-xl);
+    --box-shadow: 0 19px 25px -5px hsl(var(--primary-accent) / 0.3);
+    background: var(--clr-neutral-white);
+    border-radius: var(--content-border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.order__summary--details {
+    padding: calc(var(--content-padding) * 1.5) var(--content-padding);
+    display: grid;
+    grid-gap: var(--size-lg);
+}
+
+.order__summary--title {
+    font-weight: var(--font-weight-x-bold);
+    font-size: var(--size-xl);
+}
+
+.order__summary--desc {
+    padding-inline: calc(var(--content-padding) * 0.5);
+    font-size: var(--size-sm);
+}
+
+.order__summary--plan {
+    display: flex;
+    background: hsl(var(--bg-accent-1) / .1);
+    padding: calc(var(--content-padding) * 0.7);
+    font-size: var(--size-sm);
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--size-xs);
+}
+
+.plan__details {
+    display: flex;
+    align-items: center;
+    gap: var(--size-base);
+}
+
+.plan__details::before {
+    content: '';
+    background: url('images/icon-music.svg');
+    height: 48px;
+    aspect-ratio: 1;
+}
+
+.plan__pricing {
+    display: flex;
+    flex-direction: column;
+}
+
+.plan__name {
+    font-weight: var(--font-weight-bold);
+}
+
+.change__plan {
+}
+
+.btn {
+    border: 0;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--size-sm);
+}
+
+.order__summary--checkout {
+    padding: calc(var(--content-padding) / 1.5) var(--content-padding);
+    border-radius: calc(var(--content-border-radius) / 2);
+    color: var(--clr-neutral-white);
+    background: var(--clr-primary);
+    box-shadow: var(--box-shadow);
+}
+
+.order__summary--cancel {
+    color: var(--clr-neutral-dark-blue);
+    margin-top: var(--size-sm);
+}
+
+/* Component styling */
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    margin-top: var(--size-3xl);
+
+    & a {
+        text-decoration: none;
+    }
+}
+
+.attribution a:is(:hover, :focus) {
+    color: var(--clr-primary)
+}
+
+@media (min-width: 450px) {
+    body {
+        background: url('images/pattern-background-desktop.svg') var(--bg-accent-2);
+        background-repeat: no-repeat;
+        background-size: 100% 50%;
+    }
+
+    .order__summary {
+        max-width: 24.5rem;
+    }
+
+    .order__summary--details {
+        padding: calc(var(--content-padding) * 2);
+    }
+
+    .order__summary--title {
+        font-size: var(--size-2xl);
+    }
+}

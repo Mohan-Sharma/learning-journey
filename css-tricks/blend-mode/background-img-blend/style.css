@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(227, 22%, 17%);
+    --bg-accent-secondary: hsl(229, 24%, 13%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* sizes */
+    --size-5xs: 0.0625rem;
+    --size-4xs: 0.125rem;
+    --size-3xs: 0.25rem;
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-lato);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-x-bold);
+    background: var(--bg-accent-secondary);
+    line-height: 1.5;
+}
+
+
+h1 {
+    text-transform: uppercase;
+    font-size: clamp(3rem, 5vw + 0.5rem, 5rem);
+    line-height: 0.9;
+    margin: 0;
+    color: #ffca68;
+
+    & code {
+        display: block;
+        width: max-content;
+        background: white;
+        font-size: 0.5em;
+        color: #355f08;
+        padding: 0.25em 0.5em;
+        border-radius: 0.125em;
+        margin-bottom: 0.05em;
+    }
+}
+
+.hero {
+    min-height: calc(100dvh - 1px);
+    background-image: url("https://images.unsplash.com/photo-1623169840544-0982db65d00e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyNDM5MDIxNg");
+    background-size: cover;
+    color: white;
+    /* required for child height 100%*/
+    display: flex;
+    /* isolation here helps mix blend the background image color instead of .hero-intro, since hero intro's pseudo
+     have nothing in hero intro to blend with
+     */
+    isolation: isolate;
+    position: relative;
+}
+
+.hero-intro {
+    width: 50%;
+    padding: min(15vh, 10rem);
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        background: #355f08;
+        inset: 0;
+        z-index: -1;
+        mix-blend-mode: multiply;
+    }
+}

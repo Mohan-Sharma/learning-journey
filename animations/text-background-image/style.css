@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-accent-primary: hsl(0 3% 12%);
+    --accent-1: hsl(193, 100%, 68%);
+    --font-family-base: 'Nova Mono', monospace;
+    --font-weight: 400;
+    --font-size: 5rem;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    background: var(--bg-accent-primary);
+    min-height: calc(100dvh - 1px);
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight);
+    font-size: var(--font-size);
+    color: var(--accent-1);
+}
+
+h1 {
+    background-image: url('https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA');
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: -1;
+}
+
+@keyframes moveUpDown {
+    from {
+        translate: 0 100%;
+    }
+    to {
+        translate: 0;
+    }
+}

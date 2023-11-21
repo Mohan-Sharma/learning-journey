@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(240, 2%, 9%);
+    --bg-accent-secondary: hsl(0, 0%, 39%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* sizes */
+    --size-5xs: 0.0625rem;
+    --size-4xs: 0.125rem;
+    --size-3xs: 0.25rem;
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-regular);
+    min-height: calc(100dvh - 1px);
+    background: var(--bg-accent-primary);
+    display: grid;
+    place-content: center;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    background: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.neon__borderless {
+    color: var(--bg-accent-ternary);
+    padding: 1rem 5rem;
+    font-family: var(--font-family-base);
+    font-size: var(--size-xl);
+    text-transform: uppercase;
+    position: relative;
+    transition: 250ms;
+    overflow: hidden;
+
+    &:hover, &:focus {
+        color: var(--bg-accent-secondary);
+        background: var(--bg-accent-ternary);
+        box-shadow: 0 0 5rem 1rem var(--bg-accent-ternary);
+    }
+}
+
+.neon__borderless span {
+    position: absolute;
+    display: inline-block;
+}
+
+.neon__borderless span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg,transparent 50%, var(--bg-accent-primary));
+    width: 100%;
+    height: 5px;
+}
+
+.neon__borderless:hover span:nth-child(1) {
+    left: 100%;
+    transition: 1s;
+}
+
+.neon__borderless span:nth-child(2) {
+    right: 0;
+    top: -100%;
+    background: linear-gradient(180deg,transparent, var(--bg-accent-primary));
+    width: 5px;
+    height: 100%;
+}
+
+.neon__borderless:hover span:nth-child(2) {
+    top: 100%;
+    transition: 1s 0.25s;
+}
+
+.neon__borderless span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    background: linear-gradient(270deg,transparent 50%, var(--bg-accent-primary));
+    width: 100%;
+    height: 5px;
+}
+
+.neon__borderless:hover span:nth-child(3) {
+    right: 100%;
+    transition: 1s 0.5s;
+}
+
+
+.neon__borderless span:nth-child(4) {
+    left: 0;
+    bottom: -100%;
+    background: linear-gradient(360deg,transparent, var(--bg-accent-primary));
+    width: 5px;
+    height: 100%;
+}
+
+.neon__borderless:hover span:nth-child(4) {
+    bottom: 100%;
+    transition: 1s 0.75s;
+}
+
+.neon {
+    color: var(--bg-accent-ternary);
+    padding: 1rem 5rem;
+    /* currentColor takes font color */
+    border: 2px solid var(--bg-accent-ternary);
+    font-family: var(--font-family-base);
+    font-size: var(--size-xl);
+    text-transform: uppercase;
+    box-shadow: 0 0 10px currentColor, 0 0 10px currentColor;
+    position: relative;
+
+    &:hover, &:focus {
+        color: var(--bg-accent-secondary);
+        text-shadow: none;
+    }
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+    }
+
+    &::before {
+        pointer-events: none;
+        top: 130%;
+        left: 0;
+        /* instead of bottom and right so we can use top to move down the box which is of size button now */
+        width: 100%;
+        height: 100%;
+        background: var(--bg-accent-ternary);
+        transform: perspective(6rem) rotateX(40deg) scale(1.1);
+        filter: blur(1rem);
+        border-radius: 50%;
+        opacity: 0.7;
+    }
+
+    &::after {
+        inset: 0;
+        background: var(--bg-accent-ternary);
+        z-index: -1;
+        opacity: 0;
+        box-shadow: 0 0 5rem 1rem var(--bg-accent-ternary);
+    }
+
+    &:hover::before, &:focus::before, &:hover::after, &:focus::after {
+        opacity: 1;
+    }
+
+}

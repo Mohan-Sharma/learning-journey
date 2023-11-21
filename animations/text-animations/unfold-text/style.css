@@ -53,12 +53,12 @@ h1:hover {
         top: 0;
         left: 0;
         z-index: -1;
-        animation: zoomThru 6s ease-in forwards;
+        animation: zoomThru 6s linear forwards infinite;
         transform-origin: bottom;
     }
 
     &::after {
-        animation: moveRight 6s ease-in forwards;
+        animation: moveRight 6s linear forwards infinite;
     }
 }
 
@@ -98,6 +98,5 @@ h1::after {
     }
     100% {
         width: 100%;
-        border: none;
     }
 }

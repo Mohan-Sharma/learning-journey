@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(240, 2%, 9%);
+    --bg-accent-secondary: hsl(0, 0%, 39%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* sizes */
+    --size-5xs: 0.0625rem;
+    --size-4xs: 0.125rem;
+    --size-3xs: 0.25rem;
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-regular);
+    min-height: calc(100dvh - 1px);
+    background: var(--bg-accent-primary);
+    display: grid;
+    place-content: center;
+}
+
+.tilting__card {
+    --box-shadow: 1px 1px 34px 11px var(--bg-accent-ternary);
+    --border-radius: 1rem;
+    --content-padding: 1rem;
+    --perspective: 1000px;
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+    --degree: 15deg;
+
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+
+    color: var(--neutral-100);
+    width: 300px;
+    aspect-ratio: 9 / 16;
+    position: relative;
+    overflow: hidden;
+
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    border-radius: var(--border-radius);
+    transform-origin: center;
+    transition: transform 350ms linear;
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+}
+
+.tilting__card > div {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+/* selecting grid columns */
+/* 4, 8, 12, 16 */
+.tilting__card > div:nth-of-type(4n) {
+    grid-column: 4 / 5;
+}
+
+/* 3, 7, 11, 15*/
+.tilting__card > div:nth-of-type(4n - 1) {
+    grid-column: 3 / 4;
+}
+
+/* 2, 6, 10, 14 */
+.tilting__card > div:nth-of-type(4n - 2) {
+    grid-column: 2 / 3;
+}
+
+/* 1, 5, 9, 13 */
+.tilting__card > div:nth-of-type(4n - 3) {
+    grid-column: 1 / 2;
+}
+
+/*
+Selecting grid rows so it becomes box
+:nth-child(n+X)     // all children from the Xth position onward
+:nth-child(-n+x)    // all children up to the Xth position
+*/
+
+/* 1 to 4 */
+.tilting__card > div:nth-child(n+1):nth-child(-n+4) {
+    grid-row: 1 / 2;
+}
+
+/* 5 to 8 */
+.tilting__card > div:nth-child(n+5):nth-child(-n+8) {
+    grid-row: 2 / 3;
+}
+
+/* 9 to 12 */
+.tilting__card > div:nth-child(n+9):nth-child(-n+12) {
+    grid-row: 3 / 4;
+}
+
+/* 13 to 16 */
+.tilting__card > div:nth-child(n+13):nth-child(-n+16) {
+    grid-row: 4 / 5;
+}
+
+/* Tilting effect */
+.tilting__card:has( > div:nth-child(1):hover) {
+    --rotateX: var(--degree);
+    --rotateY: calc(var(--degree) * -1)
+}
+
+.tilting__card:has( > div:nth-child(4):hover) {
+    --rotateX: var(--degree);
+    --rotateY: var(--degree);
+}
+
+.tilting__card:has( > div:nth-child(13):hover) {
+    --rotateX: calc(var(--degree) * -1);
+    --rotateY: calc(var(--degree) * -1);
+}
+
+.tilting__card:has( > div:nth-child(16):hover) {
+    --rotateX: calc(var(--degree) * -1);
+    --rotateY: var(--degree);
+}
+
+
+.tilting__card:has( > div:nth-child(2):hover),
+.tilting__card:has( > div:nth-child(3):hover) {
+    --rotateX: var(--degree);
+}
+
+
+.tilting__card:has( > div:nth-child(5):hover),
+.tilting__card:has( > div:nth-child(6):hover),
+.tilting__card:has( > div:nth-child(9):hover),
+.tilting__card:has( > div:nth-child(10):hover) {
+    --rotateY: calc(var(--degree) * -1)
+}
+
+.tilting__card:has( > div:nth-child(7):hover),
+.tilting__card:has( > div:nth-child(8):hover),
+.tilting__card:has( > div:nth-child(11):hover),
+.tilting__card:has( > div:nth-child(12):hover) {
+    --rotateY: var(--degree);
+}
+
+.tilting__card:has( >  div:nth-child(14):hover),
+.tilting__card:has( >  div:nth-child(15):hover) {
+    --rotateX: calc(var(--degree) * -1)
+}
+
+.card__img {
+    grid-row: 1 / 2;
+    grid-column: 1 / -1;
+    z-index: 1;
+}
+
+.card__title {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    justify-self: center;
+    align-self: center;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.card__desc {
+    font-family: var(--font-family-lato);
+    grid-column: 1 / -1;
+    grid-row: 3 / 5;
+    justify-self: center;
+    align-self: start;
+    text-align: center;
+    z-index: 1;
+    padding-inline: var(--content-padding);
+}

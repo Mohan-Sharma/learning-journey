@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin and padding and reset fonts */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.1;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+:root {
+    --bg-accent-1: hsl(0, 0%, 5%);
+    --bg-accent-2: hsl(0, 0%, 39%);
+    --bg-accent-3: hsl(120, 32%, 70%);
+    --bg-accent-4: hsl(120, 67%, 12%);
+
+    --green-light: hsl(123deg, 47%, 74%);
+    --green-dark: #2e7f32;
+    --blue-light: hsl(210deg, 47%, 74%);
+    --blue-dark: #2e577f;
+    --orange-light: hsl(34deg, 93%, 77%);
+    --orange-dark: #b66a07;
+    --purple-light: hsl(231deg, 44%, 76%);
+    --purple-dark: #334084;
+    --yellow-light: hsl(54deg, 76%, 79%);
+    --yellow-dark: #afa018;
+    --brown-light: hsl(20deg, 41%, 69%);
+    --brown-dark: #68402c;
+    --red-light: hsl(0deg, 59%, 76%);
+    --red-dark: #922626;
+    --pink-light: hsl(295deg, 42%, 72%);
+    --pink-dark: #6e2f74;
+    --white-light: hsl(0deg, 0%, 100%);
+    --white-dark: #999999;
+
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+body {
+    font-family: var(--font-family-lato);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-regular);
+    min-height: calc(100dvh - 1px);
+    display: grid;
+    place-content: center;
+    background: var(--bg-accent-4);
+}
+
+.orbit {
+    --transition-duration: 60s;
+    --timing-func: linear;
+    position: relative;
+}
+
+.persona {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.persona {
+    width: 10rem;
+    aspect-ratio: 1/1;
+    & img {
+        position: absolute;
+        transition: opacity 350ms var(--timing-func);
+    }
+
+    & img:not(:first-child):hover {
+        opacity: 0;
+    }
+}
+
+.icon__wrapper {
+    position: absolute;
+    width: 10rem;
+    aspect-ratio: 1/1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.icon {
+    --light: var(--orange-light);
+    --dark: var(--orange-dark);
+    position: absolute;
+    width: 6rem;
+    aspect-ratio: 1/1;
+    background: var(--light);
+    text-align: center;
+    color: var(--neutral-100);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    animation: rotateIcons var(--transition-duration) infinite linear;
+
+    & > * {
+        position: absolute;
+        display: grid;
+        place-content: center;
+        animation: reverseRotate var(--transition-duration) infinite linear;
+    }
+
+    & p {
+        opacity: 0;
+        background: var(--dark);
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-content: center;
+        transition: opacity 350ms var(--timing-func);
+    }
+
+    &:hover p {
+        opacity: 1;
+    }
+}
+
+.icon__wrapper:hover .icon {
+    animation-play-state: paused;
+}
+
+.icon__wrapper:hover .icon > * {
+    animation-play-state: paused;
+}
+
+.icon:nth-child(1) {
+    --light: var(--blue-light);
+    --dark: var(--blue-dark);
+    opacity: 1;
+    transform: translateX(15rem);
+}
+
+.icon:nth-child(2) {
+    --light: var(--green-light);
+    --dark: var(--green-dark);
+    transform: rotate(45deg) translateX(15rem) rotate(-45deg);
+}
+
+.icon:nth-child(3) {
+    --light: var(--pink-light);
+    --dark: var(--pink-dark);
+    transform: rotate(90deg) translateX(15rem) rotate(-90deg);
+}
+
+.icon:nth-child(4) {
+    --light: var(--red-light);
+    --dark: var(--red-dark);
+    transform: rotate(135deg) translateX(15rem) rotate(-135deg);
+}
+
+
+.icon:nth-child(5) {
+    --light: var(--brown-light);
+    --dark: var(--brown-dark);
+    transform: translateX(-15rem);
+}
+
+.icon:nth-child(6) {
+    --light: var(--yellow-light);
+    --dark: var(--yellow-dark);
+    transform: rotate(225deg) translateX(15rem) rotate(-225deg);
+}
+
+
+.icon:nth-child(7) {
+    --light: var(--purple-light);
+    --dark: var(--purple-dark);
+    transform: rotate(270deg) translateX(15rem) rotate(-270deg);
+}
+
+.icon:nth-child(8) {
+    --light: var(--orange-light);
+    --dark: var(--orange-dark);
+    transform: rotate(315deg) translateX(15rem) rotate(-315deg);
+}
+
+@keyframes rotateIcons {
+    100% {
+        rotate: 1turn;
+    }
+}
+
+@keyframes reverseRotate {
+    100% {
+        rotate: -1turn;
+    }
+}

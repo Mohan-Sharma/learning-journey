@@ -1,0 +1,50 @@
+.horizontal__line {
+    border-color:  var(--bg-accent-3);
+}
+
+.light__mode {
+}
+
+.section {
+    margin-top: var(--size-3xl);
+}
+
+/* custom scrollbar */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: 0 0 0 var(--accent-2) inset;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--bg-accent-1);
+    outline: 5px solid var(--bg-accent-2);
+}
+
+/*
+
+!* xs *!
+@media (min-width: 475px) {
+}
+
+!* sm *!
+@media (min-width: 576px) {
+}
+
+!* md *!
+@media (min-width: 768px) {
+}
+
+!* lg *!
+@media (min-width: 992px) {
+}
+
+!* xl *!
+@media (min-width: 1200px) {
+}
+
+!* xxl *!
+@media (min-width: 1400px) {
+}*/

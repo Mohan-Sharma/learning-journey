@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-regular);
+    min-height: calc(100dvh - 1px);
+    background: var(--bg-accent-primary);
+    display: grid;
+    place-content: center;
+    background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card {
+    --box-shadow: 1px 1px 34px 11px var(--bg-accent-ternary);
+    --border-radius: 1rem;
+    --content-padding: 1rem;
+
+    width: 400px;
+    aspect-ratio: 9 / 12;
+    position: relative;
+    overflow: hidden;
+    color: white;
+
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    border-radius: var(--border-radius);
+
+    backdrop-filter: blur(17px) saturate(126%);
+    -webkit-backdrop-filter: blur(17px) saturate(126%);
+    background-color: rgba(17, 25, 40, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    display: grid;
+    place-content: start;
+    place-items: center;
+    gap: 2rem;
+}
+
+.card img {
+    border-radius: 50%;
+}

@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(0, 0%, 5%);
+    --bg-accent-secondary: hsl(0, 0%, 39%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --accent-4: hsla(324, 76%, 68%, 0.8);
+    --accent-5: hsl(0, 3%, 15%);
+    --accent-6: hsl(180, 1%, 36%);
+    --accent-7: hsl(334, 7%, 95%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* sizes */
+    --size-5xs: 0.0625rem;
+    --size-4xs: 0.125rem;
+    --size-3xs: 0.25rem;
+    --size-2xs: 0.5rem;
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.25rem;
+    --size-2xl: 1.5rem;
+    --size-3xl: 1.75rem;
+    --size-4xl: 2rem;
+    --size-5xl: 3.5rem;
+    --size-6xl: 5rem;
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+
+    --perspective: 10em;
+    --rotation-speed: 20s;
+    --bouncing-speed: 2s;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--size-6xl);
+    font-weight: var(--font-weight-regular);
+    min-height: calc(100dvh - 1px);
+    display: grid;
+    place-content: center;
+    color: var(--neutral-100);
+    background: var(--bg-accent-primary);
+    perspective: var(--perspective);
+    perspective-origin: 50% calc(50% - 2em);
+    overflow: hidden;
+}
+
+.scene {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate360 var(--rotation-speed) infinite linear;
+}
+
+.ball {
+    width: 1em;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 1em; /* place on top of cube, height of cube 1em */
+    left: -0.5em; /* place on center of cube */
+    background-image: radial-gradient(circle at top, var(--accent-1), var(--bg-accent-primary) 75%);
+    /* rotate reverse to scene since the ball is flat */
+    animation:
+            bounce var(--bouncing-speed) infinite ease-out,
+            rotate360 var(--rotation-speed) infinite linear reverse;
+}
+
+.cube {
+    width: 2em;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    bottom: -1em;
+    left: -1em;
+    transform-style: preserve-3d;
+    animation: cubeHeight var(--bouncing-speed) infinite linear;
+
+    .front, .back, .left, .right {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: var(--accent-4);
+        box-shadow: 0 0 0.5em var(--bg-accent-primary) inset;
+    }
+
+    .front {
+        transform: translateZ(1em);
+    }
+    .right {
+        transform: rotateY(90deg) translateZ(1em);
+    }
+    .back {
+        transform: rotateY(180deg) translateZ(1em);
+    }
+    .left {
+        transform: rotateY(270deg) translateZ(1em);
+    }
+
+    .top {
+        position: absolute;
+        width: 2em;
+        aspect-ratio: 1 / 1;
+        transform: translateY(-50%) rotateX(90deg);
+        background: var(--accent-4);
+    }
+
+    .bottom {
+        position: absolute;
+        bottom: 0;
+        width: 2em;
+        aspect-ratio: 1 / 1;
+        background: hsl(0, 0%, 0%, .5);
+        transform: translateY(50%) rotateX(90deg);
+        box-shadow: 0 0 0.5em var(--bg-accent-primary);
+    }
+}
+
+.floor {
+    width: 15em;
+    aspect-ratio: 1 / 1;
+    color: var(--bg-accent-primary);
+    background-image:
+            radial-gradient(hsl(0, 0%, 0%, .2), hsl(0, 0%, 0%) 60%),
+            repeating-conic-gradient(from 45deg, var(--accent-5) 0deg 90deg, var(--accent-6) 90deg 180deg);
+    background-size: 100%, 1em 1em;
+    position: absolute;
+    translate: -50% -50%;
+    top: 1em;
+    rotate: x 90deg;
+}
+
+.ball-shadow {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(hsl(0, 0%, 0%, .7), hsl(0, 0%, 0%, 0) 50%);
+    animation: ballShadow var(--bouncing-speed) infinite ease-out;
+}
+
+@keyframes rotate360 {
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        bottom: 0.5em;
+    }
+    50% {
+        bottom: 3em;
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes ballShadow {
+    0%, 8%, 94%, 100% {
+        scale: 1;
+        opacity: 1;
+    }
+    50% {
+        scale: 2;
+        opacity: 0.5;
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes cubeHeight {
+    0%, 100% {
+        height: 1.5em;
+    }
+    8%, 94% {
+        height: 2em;
+    }
+}

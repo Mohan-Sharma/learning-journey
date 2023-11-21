@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-primary: hsl(0, 0%, 5%);
+    --bg-accent-secondary: hsl(0, 0%, 39%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: coral;
+    --accent-2: red;
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    --perspective: 500px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--size-6xl);
+    font-weight: var(--font-weight-regular);
+    min-height: calc(100dvh - 1px);
+    display: grid;
+    place-content: center;
+    color: var(--neutral-100);
+    background: var(--bg-accent-primary);
+    perspective: var(--perspective);
+    overflow: hidden;
+    *:not(:empty) {
+        transform-style: preserve-3d;
+    }
+}
+
+.scene {
+    position: relative;
+    border: 1px solid red;
+    transform: rotateX(-30deg) rotateY(30deg);
+}
+
+.laser {
+    position: absolute;
+    inset: -150vh -1px;
+    background: var(--accent-1);
+    box-shadow: 0 0 5px var(--accent-2),
+    0 0 10px var(--accent-2),
+    0 0 15px var(--accent-2),
+    0 0 25px var(--accent-2),
+    0 0 40px var(--accent-2),
+    0 0 80px var(--accent-2);
+}
+
+.panel {
+    position: absolute;
+    width: 200vw;
+    height: 120px;
+    background: white;
+    top: -60px;
+    left: -120px;
+    rotate: x 90deg;
+}
+

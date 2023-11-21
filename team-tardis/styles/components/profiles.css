@@ -1,0 +1,210 @@
+.orbit {
+    --transition-duration: 60s;
+    --timing-func: linear;
+    position: relative;
+    margin-top: 20rem;
+}
+
+.manager-profile, .employee-profile__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.employee-profile__wrapper {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.employee-profile {
+    position: absolute;
+}
+
+/* rotate cards */
+.employee-profile:nth-child(1) {
+    transform: translateX(25rem);
+}
+
+.employee-profile:nth-child(2) {
+    transform: rotate(45deg) translateX(30rem)  rotate(-45deg);
+}
+
+.employee-profile:nth-child(3) {
+    transform: rotate(90deg) translateX(30rem)  rotate(-90deg);
+}
+
+.employee-profile:nth-child(4) {
+    transform: rotate(135deg) translateX(30rem)  rotate(-135deg);
+}
+
+.employee-profile:nth-child(5) {
+    transform: translateX(-25rem);
+}
+
+/* card design */
+.tilting__card {
+    --box-shadow: 1px 1px 34px 11px var(--bg-accent-2);
+    --border-radius: 1rem;
+    --content-padding: 1rem;
+    --perspective: 1000px;
+    --rotateX: 0deg;
+    --rotateY: 0deg;
+    --degree: 15deg;
+    --transition-duration: 250ms;
+
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+
+    color: var(--neutral-100);
+    width: 250px;
+    aspect-ratio: 9 / 11;
+    position: relative;
+    overflow: hidden;
+    place-items: center;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--accent-1);
+    transform-origin: center;
+    transition: transform var(--transition-duration) linear;
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(var(--rotateY));
+    cursor: pointer;
+
+
+    & .card__img {
+        grid-row: 1 / 2;
+        grid-column: 1 / -1;
+        z-index: 1;
+        border-radius: 50%;
+    }
+
+    & .card__title {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        justify-self: center;
+        align-self: center;
+        text-transform: uppercase;
+        z-index: 1;
+    }
+
+    & .card__desc {
+        font-family: var(--font-family-lato);
+        grid-column: 1 / -1;
+        grid-row: 3 / 5;
+        justify-self: center;
+        align-self: start;
+        text-align: center;
+        z-index: 1;
+        padding-inline: var(--content-padding);
+    }
+}
+
+
+.glassmorphic__card {
+    backdrop-filter: blur(17px) saturate(126%);
+    -webkit-backdrop-filter: blur(17px) saturate(126%);
+    background-color: rgba(17, 25, 40, 0.5);
+}
+
+.tilting__card > div {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+/* selecting grid columns */
+/* 4, 8, 12, 16 */
+.tilting__card > div:nth-of-type(4n) {
+    grid-column: 4 / 5;
+}
+
+/* 3, 7, 11, 15*/
+.tilting__card > div:nth-of-type(4n - 1) {
+    grid-column: 3 / 4;
+}
+
+/* 2, 6, 10, 14 */
+.tilting__card > div:nth-of-type(4n - 2) {
+    grid-column: 2 / 3;
+}
+
+/* 1, 5, 9, 13 */
+.tilting__card > div:nth-of-type(4n - 3) {
+    grid-column: 1 / 2;
+}
+
+/*
+Selecting grid rows so it becomes box
+:nth-child(n+X)     // all children from the Xth position onward
+:nth-child(-n+x)    // all children up to the Xth position
+*/
+
+/* 1 to 4 */
+.tilting__card > div:nth-child(n+1):nth-child(-n+4) {
+    grid-row: 1 / 2;
+}
+
+/* 5 to 8 */
+.tilting__card > div:nth-child(n+5):nth-child(-n+8) {
+    grid-row: 2 / 3;
+}
+
+/* 9 to 12 */
+.tilting__card > div:nth-child(n+9):nth-child(-n+12) {
+    grid-row: 3 / 4;
+}
+
+/* 13 to 16 */
+.tilting__card > div:nth-child(n+13):nth-child(-n+16) {
+    grid-row: 4 / 5;
+}
+
+/* Tilting effect */
+.tilting__card:has( > div:nth-child(1):hover) {
+    --rotateX: var(--degree);
+    --rotateY: calc(var(--degree) * -1)
+}
+
+.tilting__card:has( > div:nth-child(4):hover) {
+    --rotateX: var(--degree);
+    --rotateY: var(--degree);
+}
+
+.tilting__card:has( > div:nth-child(13):hover) {
+    --rotateX: calc(var(--degree) * -1);
+    --rotateY: calc(var(--degree) * -1);
+}
+
+.tilting__card:has( > div:nth-child(16):hover) {
+    --rotateX: calc(var(--degree) * -1);
+    --rotateY: var(--degree);
+}
+
+
+.tilting__card:has( > div:nth-child(2):hover),
+.tilting__card:has( > div:nth-child(3):hover) {
+    --rotateX: var(--degree);
+}
+
+
+.tilting__card:has( > div:nth-child(5):hover),
+.tilting__card:has( > div:nth-child(6):hover),
+.tilting__card:has( > div:nth-child(9):hover),
+.tilting__card:has( > div:nth-child(10):hover) {
+    --rotateY: calc(var(--degree) * -1)
+}
+
+.tilting__card:has( > div:nth-child(7):hover),
+.tilting__card:has( > div:nth-child(8):hover),
+.tilting__card:has( > div:nth-child(11):hover),
+.tilting__card:has( > div:nth-child(12):hover) {
+    --rotateY: var(--degree);
+}
+
+.tilting__card:has( >  div:nth-child(14):hover),
+.tilting__card:has( >  div:nth-child(15):hover) {
+    --rotateX: calc(var(--degree) * -1)
+}

@@ -1,19 +1,11 @@
-.footer {
+.footer__nav {
     --gap: var(--size-base);
     display: flex;
     justify-content: flex-end;
     align-items: center;
     box-shadow: 0 0 18px 3px var(--bg-accent-2);
     position: relative;
-    z-index: 999;
-    height: 56px;
-
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        box-shadow: 0 0 18px 3px var(--bg-accent-2);
-    }
+    height: 100%;
 }
 
 .footer__menu {

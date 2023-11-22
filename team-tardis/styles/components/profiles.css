@@ -1,13 +1,16 @@
+.profiles__section {
+    min-height: 900px; /* assuming stacking the cards in 3 rows for small screen */
+}
+
 .orbit {
     --transition-duration: 60s;
     --timing-func: linear;
-    position: relative;
-    margin-top: 20rem;
+    height: 100%;
 }
 
 .manager-profile, .employee-profile__wrapper {
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -46,6 +49,7 @@
 /* card design */
 .tilting__card {
     --box-shadow: 1px 1px 34px 11px var(--bg-accent-2);
+    --border: 1px solid var(--accent-1);
     --border-radius: 1rem;
     --content-padding: 1rem;
     --perspective: 1000px;
@@ -53,55 +57,70 @@
     --rotateY: 0deg;
     --degree: 15deg;
     --transition-duration: 250ms;
+    --timing-function: ease;
 
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
-
     color: var(--neutral-100);
+    font-family: var(--font-family-base);
+    line-height: var(--size-base);
     width: 250px;
     aspect-ratio: 9 / 11;
     position: relative;
     overflow: hidden;
-    place-items: center;
-    box-shadow: var(--box-shadow);
+    align-content: space-evenly;
+    justify-items: center;
     text-align: center;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--accent-1);
-    transform-origin: center;
-    transition: transform var(--transition-duration) linear;
-    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(var(--rotateY));
     cursor: pointer;
-
+    border-radius: var(--border-radius);
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform var(--transition-duration) var(--timing-function);
 
     & .card__img {
-        grid-row: 1 / 2;
-        grid-column: 1 / -1;
-        z-index: 1;
         border-radius: 50%;
     }
 
     & .card__title {
-        grid-column: 1 / -1;
-        grid-row: 2 / 3;
-        justify-self: center;
-        align-self: center;
+        font-family: var(--font-family-lato);
+        font-size: var(--size-lg);
         text-transform: uppercase;
-        z-index: 1;
+        transform: translateZ(5rem);
     }
 
     & .card__desc {
-        font-family: var(--font-family-lato);
-        grid-column: 1 / -1;
-        grid-row: 3 / 5;
-        justify-self: center;
-        align-self: start;
-        text-align: center;
-        z-index: 1;
+        font-size: var(--size-xs);
         padding-inline: var(--content-padding);
+        color: var(--neutral-900);
+    }
+
+    & .connect-via ul {
+        --color: var(--neutral-100);
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: var(--size-base);
+    }
+
+    & .connect-via ul li {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--color);
+    }
+
+    & .connect-via ul li a {
+        display: inline-block;
+        font-size: var(--size-xl);
+        text-decoration: none;
+        align-items: center;
+        color: white;
     }
 }
-
 
 .glassmorphic__card {
     backdrop-filter: blur(17px) saturate(126%);
@@ -109,102 +128,64 @@
     background-color: rgba(17, 25, 40, 0.5);
 }
 
-.tilting__card > div {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
+.connect-via__neon-icon {
+    position: relative;
+    width: 40px;
+    aspect-ratio: 1/1;
+    border: var(--border);
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor, 0 0 10px currentColor;
+
+    &:hover, &:focus {
+        color: currentColor;
+        text-shadow: none;
+    }
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+    }
+
+    &::before {
+        pointer-events: none;
+        top: 100%;
+        left: 0;
+        /* instead of bottom and right so we can use top to move down the box which is of size button now */
+        width: 100%;
+        height: 100%;
+        background: currentColor;
+        transform: perspective(10rem) rotateX(60deg) scale(0.8);
+        filter: blur(1rem);
+        border-radius: 50%;
+        opacity: 0.7;
+    }
+
+    &::after {
+        inset: 0;
+        background: currentColor;
+        z-index: -1;
+        opacity: 0;
+        box-shadow: 0 0 6rem 1rem currentColor;
+        border-radius: 50%;
+    }
+
+    &:hover::before, &:focus::before, &:hover::after, &:focus::after {
+        opacity: 1;
+    }
 }
 
-/* selecting grid columns */
-/* 4, 8, 12, 16 */
-.tilting__card > div:nth-of-type(4n) {
-    grid-column: 4 / 5;
+.connect-via__neon-icon:nth-child(1) {
+    --color: #818cf8;
 }
 
-/* 3, 7, 11, 15*/
-.tilting__card > div:nth-of-type(4n - 1) {
-    grid-column: 3 / 4;
+.connect-via__neon-icon:nth-child(2) {
+    --color: #2dd4bf;
 }
 
-/* 2, 6, 10, 14 */
-.tilting__card > div:nth-of-type(4n - 2) {
-    grid-column: 2 / 3;
+.connect-via__neon-icon:nth-child(3) {
+    --color: #7dd3fc;
 }
 
-/* 1, 5, 9, 13 */
-.tilting__card > div:nth-of-type(4n - 3) {
-    grid-column: 1 / 2;
-}
-
-/*
-Selecting grid rows so it becomes box
-:nth-child(n+X)     // all children from the Xth position onward
-:nth-child(-n+x)    // all children up to the Xth position
-*/
-
-/* 1 to 4 */
-.tilting__card > div:nth-child(n+1):nth-child(-n+4) {
-    grid-row: 1 / 2;
-}
-
-/* 5 to 8 */
-.tilting__card > div:nth-child(n+5):nth-child(-n+8) {
-    grid-row: 2 / 3;
-}
-
-/* 9 to 12 */
-.tilting__card > div:nth-child(n+9):nth-child(-n+12) {
-    grid-row: 3 / 4;
-}
-
-/* 13 to 16 */
-.tilting__card > div:nth-child(n+13):nth-child(-n+16) {
-    grid-row: 4 / 5;
-}
-
-/* Tilting effect */
-.tilting__card:has( > div:nth-child(1):hover) {
-    --rotateX: var(--degree);
-    --rotateY: calc(var(--degree) * -1)
-}
-
-.tilting__card:has( > div:nth-child(4):hover) {
-    --rotateX: var(--degree);
-    --rotateY: var(--degree);
-}
-
-.tilting__card:has( > div:nth-child(13):hover) {
-    --rotateX: calc(var(--degree) * -1);
-    --rotateY: calc(var(--degree) * -1);
-}
-
-.tilting__card:has( > div:nth-child(16):hover) {
-    --rotateX: calc(var(--degree) * -1);
-    --rotateY: var(--degree);
-}
-
-
-.tilting__card:has( > div:nth-child(2):hover),
-.tilting__card:has( > div:nth-child(3):hover) {
-    --rotateX: var(--degree);
-}
-
-
-.tilting__card:has( > div:nth-child(5):hover),
-.tilting__card:has( > div:nth-child(6):hover),
-.tilting__card:has( > div:nth-child(9):hover),
-.tilting__card:has( > div:nth-child(10):hover) {
-    --rotateY: calc(var(--degree) * -1)
-}
-
-.tilting__card:has( > div:nth-child(7):hover),
-.tilting__card:has( > div:nth-child(8):hover),
-.tilting__card:has( > div:nth-child(11):hover),
-.tilting__card:has( > div:nth-child(12):hover) {
-    --rotateY: var(--degree);
-}
-
-.tilting__card:has( >  div:nth-child(14):hover),
-.tilting__card:has( >  div:nth-child(15):hover) {
-    --rotateX: calc(var(--degree) * -1)
+.connect-via__neon-icon:nth-child(4) {
+    --color: #fb923c;
 }

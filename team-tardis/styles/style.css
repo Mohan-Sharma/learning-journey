@@ -59,6 +59,27 @@ body {
     position: relative;
 }
 
+header {
+    position: relative;
+    height: 56px;
+    z-index: 999;
+}
+
+main {
+    min-height: calc(100dvh - calc(56px * 2));
+}
+
+footer {
+    position: relative;
+    height: 56px;
+    z-index: 999;
+    margin-top: var(--size-5xl);
+}
+
+section {
+    position: relative;
+}
+
 img, svg, picture, video {
     display: block;
     max-width: 100%;
@@ -77,10 +98,6 @@ button {
 a {
     cursor: pointer;
     text-decoration: none;
-}
-
-main {
-    min-height: calc(100dvh - 56px);
 }
 
 @media (min-width: 768px) {

@@ -7,9 +7,11 @@
 	<title>Team TARDIS</title>
 </head>
 <body>
-<div class="star-small"></div>
-<div class="star-medium"></div>
-<div class="star-big"></div>
+<div class="stars__wrapper">
+	<div class="star-small"></div>
+	<div class="star-medium"></div>
+	<div class="star-big"></div>
+</div>
 <header class="header">
 	<nav class="header__nav">
 		<ul class="header__menu">
@@ -22,19 +24,6 @@
 			<li class="header__menu-item">
 				<a class="header__link" href="#projects">Projects</a>
 			</li>
-			<li class="header__line"></li>
-			<li class="header__menu-item">
-				<button class="header__sun sun" id="toggleTheme">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-						<path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
-					</svg>
-				</button>
-				<button class="header__moon moon" id="toggleTheme">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-						<path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"/>
-					</svg>
-				</button>
-			</li>
 		</ul>
 		<button class="header__bars">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -43,39 +32,8 @@
 		</button>
 	</nav>
 </header>
-<!--<div class="mobile-nav">
-	<nav>
-		<ul class="mobile-nav__menu">
-			<li><a href="#about" class="mobile-nav__link">About</a></li>
-			<li><a href="#work" class="mobile-nav__link">Profile</a></li>
-			<li><a href="#experience" class="mobile-nav__link">Experience</a></li>
-			<li><a href="#projects" class="mobile-nav__link">Project</a></li>
-			<li class="mobile-nav__link-line"></li>
-			<li>
-				<button class="mobile-nav__sun sun" id="toggleTheme">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-						<path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
-					</svg>
-				</button>
-				<button class="mobile-nav__moon moon" id="toggleTheme">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-						<path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd"/>
-					</svg>
-				</button>
-			</li>
-			<li>
-				<a href="/Resume.docx" class="mobile-nav__resume" download="M-Sharma-Resume">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="12" height="12">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-					</svg>
-					<span>Resume</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
-</div>-->
 <main>
-	<section id="about" class="hero-section">
+	<section id="about" class="hero__section">
 		<!--<video autoplay playsinline loop muted class="hero-section__video" style="pointer-events: none">
 			<source src="/hero-optimized.mp4" type="video/mp4" />
 		</video>-->
@@ -86,160 +44,125 @@
 		</div>
 	</section>
 	
-	<section id="profiles" class="profiles-section section">
+	<section id="profiles" class="profiles__section">
 		<div class="orbit">
 			<div class="manager-profile">
 				<div class="tilting__card glassmorphic__card">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
 					<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fHww" alt="" class="card__img" width="120" height="120">
 					<h1 class="card__title">Preetish Prakash</h1>
-					<p class="card__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<p class="card__desc">People's Manager</p>
+					<div class="connect-via">
+						<ul>
+							<li class="connect-via__neon-icon"><a href="https://teams.microsoft.com/l/chat/0/0?users=preetish.prakash@sap.com" target="_blank"><i class="fa-brands fa-microsoft"></i></a></li>
+							<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-regular fa-envelope"></i></a></li>
+							<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+							<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class="employee-profile__wrapper">
 				<div class="employee-profile">
 					<div class="tilting__card glassmorphic__card">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
 						<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fHww" alt="" class="card__img" width="120" height="120">
 						<h1 class="card__title">Mohan Sharma</h1>
-						<p class="card__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<p class="card__desc">Senior Developer / Associate Architect</p>
+						<div class="connect-via">
+							<ul>
+								<li class="connect-via__neon-icon"><a href="https://teams.microsoft.com/l/chat/0/0?users=mohan.sharma@sap.com" target="_blank"><i class="fa-brands fa-microsoft"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-regular fa-envelope"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="employee-profile">
 					<div class="tilting__card glassmorphic__card">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
 						<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fHww" alt="" class="card__img" width="120" height="120">
 						<h1 class="card__title">Ananda Palani</h1>
-						<p class="card__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<p class="card__desc">Senior Developer</p>
+						<div class="connect-via">
+							<ul>
+								<li class="connect-via__neon-icon"><a href="https://teams.microsoft.com/l/chat/0/0?users=ananda.palani@sap.com" target="_blank"><i class="fa-brands fa-microsoft"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-regular fa-envelope"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="employee-profile">
 					<div class="tilting__card glassmorphic__card">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
 						<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fHww" alt="" class="card__img" width="120" height="120">
 						<h1 class="card__title">Saurabh Singh</h1>
-						<p class="card__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<p class="card__desc">Senior Developer</p>
+						<div class="connect-via">
+							<ul>
+								<li class="connect-via__neon-icon"><a href="https://teams.microsoft.com/l/chat/0/0?users=saurabh.singh06@sap.com" target="_blank"><i class="fa-brands fa-microsoft"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-regular fa-envelope"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="employee-profile">
 					<div class="tilting__card glassmorphic__card">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
 						<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fHww" alt="" class="card__img" width="120" height="120">
 						<h1 class="card__title">Mehul Gupta</h1>
-						<p class="card__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<p class="card__desc">Developer</p>
+						<div class="connect-via">
+							<ul>
+								<li class="connect-via__neon-icon"><a href="https://teams.microsoft.com/l/chat/0/0?users=mehul.gupta01@sap.com" target="_blank"><i class="fa-brands fa-microsoft"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-regular fa-envelope"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="employee-profile">
 					<div class="tilting__card glassmorphic__card">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
 						<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyc29ufGVufDB8fDB8fHww" alt="" class="card__img" width="120" height="120">
 						<h1 class="card__title">Punith Balaiah</h1>
-						<p class="card__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+						<p class="card__desc">Developer</p>
+						<div class="connect-via">
+							<ul>
+								<li class="connect-via__neon-icon"><a href="https://teams.microsoft.com/l/chat/0/0?users=punith.balaiah@sap.com" target="_blank"><i class="fa-brands fa-microsoft"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-regular fa-envelope"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li class="connect-via__neon-icon"><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<section id="projects" class="projects__section">
+		<div class="concur-store__info glassmorphic__card">
+			<div class="concur-store__img">
+				<img src="/store.png" alt="sap concur digital store homepage with a rotating banner and catalogs">
+			</div>
+			<div class="concur-store__title">
+				<span>SAP Concur Store</span>
+			</div>
+		</div>
+	</section>
+	<section class="objects">
+	</section>
 </main>
-<!--<footer>
-	<nav class="footer">
+<footer class="footer">
+	<nav class="footer__nav">
 		<ul class="footer__menu">
 			<li><a class="footer__link" href="#copyright">Copyright</a></li>
 			<li class="footer__line"></li>
 			<li><a class="footer__link" href="mailto:mtarrnesharma@gmail.com" target="_blank" rel="noopener noreferrer">Contact</a></li>
 		</ul>
 	</nav>
-</footer>-->
+</footer>
+<script src="https://kit.fontawesome.com/aaa9d28886.js" crossorigin="anonymous"></script>
 <script type="module" src="./src/main.js"></script>
 </body>
 </html>

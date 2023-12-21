@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-primary: hsl(0, 0%, 5%);
+    --bg-accent-secondary: hsl(0, 0%, 39%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: 143, 64%, 24%;
+    --accent-2: 166, 91%, 9%;
+    --accent-3: hsl(180 100% 50% / .5);
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img, svg, picture, iframe, video {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-lato);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-x-bold);
+    background: var(--bg-accent-primary);
+}
+
+main {
+    display: grid;
+    place-content: center;
+    min-height: calc(100dvh - 1px);
+}
+
+.screen {
+    width: 500px;
+    aspect-ratio: 10/16;
+    border: 3px solid var(--accent-3);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(hsl(var(--accent-1), 0.3), hsl(var(--accent-1), 0.3) 3px, hsl(var(--accent-2), 0.3) 3px, hsl(var(--accent-2), 0.3) 9px);
+    background-size: 100% 9px; /* since first color takes 3px and second takes 6px total height without repeat 9px, to check place background no repeat */
+    animation: moveUpDown 30s linear infinite;
+}
+
+.img {
+    position: absolute;
+    inset: 0;
+    background-image: url("https://images.unsplash.com/photo-1682687982107-14492010e05e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: 300%; /* to move around the image using animation */
+    filter: sepia(100%) hue-rotate(92deg);
+    opacity: 0.6;
+    animation: stir 30s linear infinite;
+}
+
+.content {
+    width: 90%;
+    height: 93%;
+    border: 3px solid cyan;
+    border-radius: inherit;
+}
+
+@keyframes moveUpDown {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 -100%; /* bottom to up plus 100% is top to bottom */
+    }
+}
+
+@keyframes stir {
+    0% {
+        background-position: 36% 42%;
+        background-size: 200%;
+    }
+
+    20% {
+        background-position: 30% 35%;
+        background-size: 200%;
+    }
+
+    20.0001% {
+        background-position: 60% 85%;
+        background-size: 500%;
+    }
+
+    40% {
+        background-position: 49% 81%;
+        background-size: 500%;
+    }
+
+    40.0001% {
+        background-position: 80% 42%;
+        background-size: 300%;
+    }
+
+    60% {
+        background-position: 84% 33%;
+        background-size: 300%;
+    }
+
+    60.0001% {
+        background-position: 0% 0%;
+        background-size: 300%;
+    }
+
+    80% {
+        background-position: 15% 4%;
+        background-size: 300%;
+    }
+
+    80.0001% {
+        background-position: 80% 10%;
+        background-size: 300%;
+    }
+
+    100% {
+        background-position: 99% 14%;
+        background-size: 300%;
+    }
+}

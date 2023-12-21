@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(0, 0%, 5%);
+    --bg-accent-secondary: hsl(0, 0%, 39%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --accent-4: hsla(324, 76%, 68%, 0.8);
+    --accent-5: hsl(0, 3%, 15%);
+    --accent-6: hsl(180, 1%, 36%);
+    --accent-7: hsl(334, 7%, 95%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img, svg, picture, iframe, video {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-lato);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-x-bold);
+    min-height: calc(100dvh - 1px);
+    background: var(--bg-accent-secondary);
+}
+
+/*
+ better image reset
+
+img {
+    max-width: 100%;
+    vertical-align: center; !* removes the weird space below img, does same work as display: block *!
+    height: auto; !* maintains aspect ratio, provide width height in img tag *!
+    background-repeat: no-repeat;
+    background-size: cover; !* comes in handy when implementing no resolution display to imitate lazy loading https://csswizardry.com/2023/09/the-ultimate-lqip-lcp-technique/ *!
+    font-style: italic; !* if img broken display alt in italic to standout *!
+    shape-margin: 1rem; !* shape outside margin by default *!
+}
+*/
+

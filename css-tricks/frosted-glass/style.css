@@ -1,0 +1,46 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    grid-auto-flow: column;
+    gap: 3rem;
+    min-height: 100svh;
+    background-image: url("https://images.unsplash.com/photo-1621795307430-3ff25aa08945?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-attachment: fixed; /* all children inheriting will have the same image placed as the parent, children will not have the image fitted into it's view */
+}
+
+.frosted-glass {
+    width: 25rem;
+    aspect-ratio: 1/1.5;
+    background: inherit;
+    box-shadow: 0 0 20px 0 hsl(0, 0%, 0%, 0.2);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.frosted-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(15px);
+    margin: -20px;
+}
+
+
+.frosted-glass-2 {
+    width: 25rem;
+    aspect-ratio: 1/1.5;
+    box-shadow: 0 0 20px 0 hsl(0, 0%, 0%, 0.2);
+    background-color: hsl(0, 0%, 100%, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Modern Design</title>
+	<link rel="stylesheet" href="style.css">
+	<script type="module" src="main.js"></script>
+</head>
+<body>
+<main>
+	<div class="glow"></div>
+	<div class="bubbles"></div>
+	<svg stroke="white" fill="transparent" viewBox="0 0 1600 480" class="grid">
+		<pattern width="10" height="10" patternUnits="userSpaceOnUse" id="small-grid">
+			<rect width="100%" height="100%" stroke-width="0.2" />
+		</pattern>
+		<rect width="100%" height="100%" fill="url(#small-grid)" />
+		
+		<pattern width="80" height="80" patternUnits="userSpaceOnUse" id="large-grid">
+			<rect width="100%" height="100%" />
+		</pattern>
+		<rect width="100%" height="100%" fill="url(#large-grid)" />
+	</svg>
+	<section class="hero">
+		<p class="desc">Moving towards</p>
+		<h1 class="title">dark theme <span>website</span></h1>
+	</section>
+</main>
+</body>
+</html>

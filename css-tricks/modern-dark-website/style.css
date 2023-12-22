@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nova+Mono&display=swap');
+
+/* Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(0, 0%, 5%);
+    --bg-accent-secondary: hsl(0, 4%, 10%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --accent-4: hsla(324, 76%, 68%, 0.8);
+    --accent-5: hsl(0, 3%, 15%);
+    --accent-6: hsl(180, 1%, 36%);
+    --accent-7: hsl(334, 7%, 95%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img, svg, picture, iframe, video {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-family-lato);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight-x-bold);
+    background: var(--bg-accent-secondary);
+}
+
+.hero {
+    min-height: 100svh;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    color: var(--neutral-700);
+}
+
+.desc {
+    font-size: min(2rem, 4vw);
+}
+
+.title {
+    font-weight: var(--font-weight-bold);
+    font-size: min(6rem, 7vw);
+    text-transform: uppercase;
+
+    span {
+        background-image: linear-gradient(to right, var(--accent-1), var(--accent-3), var(--accent-1));
+        background-size: 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-text-fill-color: transparent;
+        animation: pan-out-bg 10s linear infinite;
+    }
+}
+
+.glow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 80%;
+    height: 150px;
+    background-image: radial-gradient(ellipse, var(--accent-4), var(--accent-3), transparent);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    filter: blur(10rem);
+}
+
+.grid {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    --mask-img: radial-gradient(50% 60% at top center, white, transparent);
+    mask-image: var(--mask-img); /* mask the svg grid to display only as ellipse */
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: clip;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background-color: red;
+    aspect-ratio: 1/1;
+    top: 100%;
+    z-index: -1;
+}
+
+@keyframes pan-out-bg {
+    from {
+        background-position: 0 center;
+    }
+    to {
+        background-position: -200% center;
+    }
+}

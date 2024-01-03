@@ -45,47 +45,37 @@ body {
     font-weight: var(--font-weight-x-bold);
     min-height: calc(100dvh - 1px);
     background: var(--bg-accent-primary);
+    display: grid;
+    place-content: center;
 }
 
 .blob {
     position: fixed;
     top: 0;
     left: 0;
-    width: 15rem;
+    width: 2rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    background-image: linear-gradient(to right, var(--accent-3), var(--accent-2), var(--accent-1));
+    background: var(--neutral-100);
     pointer-events: none;
     opacity: 0;
     transition: opacity 500ms ease;
-    z-index: -2;
+    z-index: 1000;
 }
 
 body:hover > .blob {
     opacity: 1;
 }
 
-.blur {
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border-radius: inherit;
-    backdrop-filter: blur(8rem);
-    z-index: -1;
-    pointer-events: none;
-}
+.interactable__img {
+    width: 19rem;
+    aspect-ratio: 9 / 16;
+    background-image: url("https://images.unsplash.com/photo-1657739774592-14c8f97eaece?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60");
+    background-size: cover;
+    transition: scale 300ms ease;
+    border-radius: 10px;
 
-@keyframes rotate360 {
-    from {
-        scale: 1;
-        rotate: 0deg;
-    }
-    50% {
-        scale: 1 1.2;
-    }
-    to {
-        scale: 1;
-        rotate: 360deg;
+    &:hover {
+        scale: 1.2;
     }
 }

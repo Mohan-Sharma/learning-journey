@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* color */
+    --bg-accent-1: 227 22% 17%;
+    --bg-accent-2: 229 24% 13%;
+    --bg-accent-primary: hsl(0, 0%, 5%);
+    --bg-accent-secondary: hsl(0, 0%, 39%);
+    --bg-accent-ternary: hsl(120, 32%, 70%);
+    --accent-1: hsl(193, 100%, 68%);
+    --accent-2: hsl(225, 75%, 56%);
+    --accent-3: hsl(264, 100%, 38%);
+    --accent-4: hsla(324, 76%, 68%, 0.8);
+    --accent-5: hsl(0, 3%, 15%);
+    --accent-6: hsl(180, 1%, 36%);
+    --accent-7: hsl(334, 7%, 95%);
+    --neutral-100: hsl(0, 0%, 100%);
+    --neutral-700: hsl(0 0% 100% / .7);
+    --neutral-900: hsl(0 0% 100% / .9);
+
+    /* Fonts */
+    --font-family-base: 'Nova Mono', monospace;
+    --font-family-lato: 'Lato', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-x-bold: 900;
+    --font-size: 1rem;
+}
+
+img, svg, picture, video {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--clr-violet500);
+    outline: 1px solid slategrey;
+    border-radius: 10px;
+    height: 200px;
+}
+
+body {
+    font-weight: var(--font-weight-regular);
+    color: var(--neutral-100);
+}
+
+.search-bar {
+    border: none;
+    outline: none;
+    width: 350px;
+}
+
+.category-btn{
+    font-weight: bold !important;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    cursor:pointer;
+    background: transparent;
+    outline: none;
+    border: none;
+
+    padding: 7px 15px;
+    margin: 10px 0px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background-color: #FC1503;
+    color: var(--neutral-100);
+}
+
+.category-btn:hover span{
+    color: var(--neutral-100) !important;
+}
+
+@media screen and (max-width: 900px) {
+    .category-btn{
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .search-bar{
+        width:200px;
+    }
+}

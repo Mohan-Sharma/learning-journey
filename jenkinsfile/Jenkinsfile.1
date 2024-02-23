@@ -1,0 +1,98 @@
+pipeline {
+    agent {
+        kubernetes {
+            yaml '''
+              apiVersion: v1
+              kind: Pod
+              spec:
+                containers:
+                - name: mvn-396-sapmachine-21
+                  image: maven:3.9.6-sapmachine-21
+                  command:
+                  - sleep
+                  args:
+                  - infinity
+'''
+        }
+    }
+    environment {
+        JAVA_HOME = '/usr/lib/jvm/sapmachine-21'
+    }
+    options {
+        skipDefaultCheckout(true)
+        buildDiscarder(logRotator(numToKeepStr: '7', artifactNumToKeepStr: '7', artifactDaysToKeepStr: '15', daysToKeepStr: '15'))
+    }
+
+    parameters {
+        choice(
+                name: 'Environment',
+                choices: ['dev', 'uat'],
+                description: 'Environment to run the test against!!'
+        )
+    }
+
+    stages {
+        stage('checkout tests') {
+            steps {
+                cleanWs()
+                script {
+                    git branch: 'main', credentialsId: 'I504180-github-wdf-ssh', url: 'git@github.wdf.sap.corp:IDST/coreint-test-framework.git'
+                }
+            }
+        }
+        stage('run tests') {
+            steps {
+                script {
+                    container('mvn-396-sapmachine-21') {
+                        echo "Executing tests for against environment: ${params.Environment.toString()}"
+                        sh 'mvn -version'
+                        sh 'java -version'
+                        configFileProvider([configFile(fileId: 'secured-i4d-properties', targetLocation: 'secure-i4d.properties', variable: 'secure_i4d_properties')]) {
+                            try {
+                                sh "mvn clean test -Dspring.profiles.active=${params.Environment} -Dspring.config.additional-location=$secure_i4d_properties"
+                            } catch (err) {
+                                echo err.getMessage()
+                            }
+                        }
+                        containerLog 'mvn-396-sapmachine-21'
+                    }
+                }
+            }
+            post {
+                always {
+                    junit '**/surefire-reports/*.xml'
+                    cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: 'target/cucumber-reports/Cucumber.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'reports/extentreports', reportFiles: 'extent-html.html', reportName: 'Extent Report', reportTitles: 'Extent Report', useWrapperFileDirectly: true])
+                }
+            }
+        }
+        stage('zip reports') {
+            steps {
+                script {
+                    zip archive: true, dir: 'reports/extentreports', exclude: '', glob: '', zipFile: 'reports.zip'
+                }
+            }
+        }
+        stage('email reports') {
+            steps {
+                script {
+                    jobName = "${env.JOB_BASE_NAME}"
+                    buildNumber = "${currentBuild.number}"
+                    buildResult = "${currentBuild.currentResult}"
+                    buildURL = "${env.BUILD_URL}"
+                    color = "${buildResult}"  != "SUCCESS" ? "${buildResult}"  == "UNSTABLE" ? "yellow" : "red" : "green"
+                    subject = """Reports Jaas Job: ${jobName} [${buildNumber}]: ${buildResult}"""
+                    body = """<p style='color: ${color}'><b>Job Name</b>: ${jobName} <br><b>Build Number</b>: [${buildNumber}] <br><b>Build Status</b>: ${buildResult}</p>
+                                          <p>Check console output at &QUOT;<a href='${buildURL}'>${jobName} [${buildNumber}]</a>&QUOT;</p>"""
+                    emailext (
+                            subject: subject,
+                            body: body,
+                            recipientProviders: [developers(), requestor(), contributor(), culprits(), upstreamDevelopers()],
+                            mimeType: 'text/html',
+                            attachmentsPattern: 'reports/extentreports/extent-report.pdf'
+                    )
+                }
+            }
+        }
+    }
+}

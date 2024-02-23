@@ -1,0 +1,59 @@
+pipeline {
+    agent {
+        kubernetes {
+            containerTemplate {
+                name 'maven' // Name of the container template
+                image 'maven:3.9.6-sapmachine-21' // Maven Docker image
+                ttyEnabled true
+                command 'cat' // Command to keep container running
+            }
+        }
+    }
+    environment {
+        JAVA_HOME = '/usr/lib/jvm/sapmachine-21' // Set the correct path to your JDK installation directory
+    }
+
+    options {
+        skipDefaultCheckout(true)
+        buildDiscarder(logRotator(numToKeepStr: '7', artifactNumToKeepStr: '7', artifactDaysToKeepStr: '15', daysToKeepStr: '15'))
+    }
+
+    parameters {
+        choice(
+                name: 'Environment',
+                choices: ['dev', 'uat'],
+                description: 'Environment to run the test against!!'
+        )
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                cleanWs()
+                script {
+                    git branch: 'main', credentialsId: 'I504180-github-wdf-ssh', url: 'git@github.wdf.sap.corp:IDST/coreint-test-framework.git'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                container('maven') {
+                sh 'echo $JAVA_HOME'
+                    sh 'java -version' // Verify Java version
+                    sh 'mvn -version' // Verify Maven version
+                    sh 'mvn clean package' // Or any other Maven commands needed for building your project
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                container('maven') {
+                sh 'echo $JAVA_HOME'
+                    sh 'java -version' // Verify Java version
+                    sh 'mvn -version' // Verify Maven version
+                    sh "mvn clean test -Dspring.profile.active=${params.Environment}"
+                }
+            }
+        }
+    }
+}

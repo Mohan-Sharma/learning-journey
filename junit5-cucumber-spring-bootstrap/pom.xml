@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.2</version>
+		<version>3.2.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.sap.concur</groupId>
@@ -20,8 +20,16 @@
 		<junit.platform.version>1.10.2</junit.platform.version>
 		<failsafe.plugin.version>3.2.5</failsafe.plugin.version>
 		<surefire.plugin.version>3.2.5</surefire.plugin.version>
-		<selenium.version>4.17.0</selenium.version>
+		<selenium.version>4.18.1</selenium.version>
+		<webdrivermanager.version>5.7.0</webdrivermanager.version>
+		<extentreports.version>5.1.1</extentreports.version>
+		<extentreports-cucumber7-adapter.version>1.14.0</extentreports-cucumber7-adapter.version>
+		<jakarta.annotation-api.version>2.1.1</jakarta.annotation-api.version>
+		<commons-lang3.version>3.14.0</commons-lang3.version>
+		<httpclient5.version>5.3.1</httpclient5.version>
+		<start-class>com.sap.concur.coreint.CoReIntTestFrameworkApplication</start-class>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,18 +85,18 @@
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
-			<version>5.1.1</version>
+			<version>${extentreports.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>tech.grasshopper</groupId>
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
-			<version>1.14.0</version>
+			<version>${extentreports-cucumber7-adapter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!--Reporting End-->
 
 		<!--JUnit5 Start-->
-		<!--JUnit5-->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -99,6 +107,7 @@
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
 			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
@@ -119,8 +128,40 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>${selenium.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>${webdrivermanager.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<!--Selenium End-->
+
+		<!--Utilities Start-->
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+			<version>${httpclient5.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+			<version>${jakarta.annotation-api.version}</version>
+		</dependency>
+		<!--Utilities End-->
 	</dependencies>
 
 	<build>
@@ -135,6 +176,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<mainClass>${start-class}</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -149,5 +191,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

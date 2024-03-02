@@ -14,10 +14,10 @@
         <protocol>https</protocol>
 
         <!-- title of the document -->
-        <documentTitle>HTML Extent</documentTitle>
+        <documentTitle>CoRe Integration test report</documentTitle>
 
         <!-- report name - displayed at top-nav -->
-        <reportName>SAP Concur store report</reportName>
+        <reportName>CoRe Integration test report</reportName>
 
         <!-- view report without internet -->
         <offlineMode>true</offlineMode>
